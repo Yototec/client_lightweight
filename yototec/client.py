@@ -43,12 +43,12 @@ class Client:
         self, tic: str, freq: str = "minute"
     ) -> Optional[Dict[str, Dict[str, float]]]:
         """
-        Return the latest availbe aggregated price for a ticker in a user-defined
+        Return the latest available aggregated price for a ticker in a user-defined
         `freq` (i.e. "minute", "hour", "day").
         A valid query-param `api_key` is required.
         """
         resp = requests.get(
-            f"{self.base_url}/data/get_data_last?tic={tic}&&freq={freq}&api_key={self.api_key}",
+            f"{self.base_url}/data/get_data_last?tic={tic}&freq={freq}&api_key={self.api_key}",
         )
         if resp.status_code == 200:
             data: Dict[str, Dict[str, float]] = resp.json()
