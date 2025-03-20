@@ -44,7 +44,7 @@ Since this is a standalone Python file, you can simply:
 ### Initializing the Client
 
 ```python
-from client import Client
+from yototec.client import Client
 
 # If you have an API key:
 api_key = "YOUR_YOTOTEC_API_KEY"
@@ -53,7 +53,7 @@ api_key = "YOUR_YOTOTEC_API_KEY"
 client = Client(api_key=api_key)
 
 # Or override the base URL if needed:
-# client = Client(base_url="https://your-custom-domain.com", api_key=api_key)
+# client = Client(base_url="https://some-other-domain.com", api_key=api_key)
 ```
 
 ### Examples
@@ -61,7 +61,7 @@ client = Client(api_key=api_key)
 This is an example of how you might use this client:
 
 ```python
-from client import Client
+from yototec.client import Client
 
 def main():
     # Replace with your real API key
