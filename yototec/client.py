@@ -14,12 +14,13 @@ class Client:
     A Python client that wraps interactions with the Yototec Market API.
     """
 
-    def __init__(self, base_url: str = BASE_URL, api_key: str = ""):
+    def __init__(self, base_url: str = BASE_URL, api_key: str = "", timeout: int = 30):
         """
         Initialize the client with a base URL and an optional API key.
         """
         self.base_url = base_url.rstrip("/")
         self.api_key = api_key
+        self.timeout = timeout
 
     def get_data(
         self, tic: str, sdate: str, edate: str, freq: str = "minute"
@@ -33,6 +34,7 @@ class Client:
         """
         resp = requests.get(
             f"{self.base_url}/data/get_data?tic={tic}&sdate={sdate}&edate={edate}&freq={freq}&api_key={self.api_key}",
+            timeout=self.timeout,
         )
         if resp.status_code == 200:
             data: Dict[str, Dict[str, float]] = resp.json()
@@ -49,6 +51,7 @@ class Client:
         """
         resp = requests.get(
             f"{self.base_url}/data/get_data_last?tic={tic}&freq={freq}&api_key={self.api_key}",
+            timeout=self.timeout,
         )
         if resp.status_code == 200:
             data: Dict[str, Dict[str, float]] = resp.json()
